@@ -7,6 +7,7 @@
   * Virtual Machines
   * Containers
 * Docker Containers
+  * Installing
   * Our repo
     * Directory
     * Service

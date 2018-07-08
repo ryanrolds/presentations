@@ -1,7 +1,6 @@
 class: middle, center
 
-# Docker
-## Catchy title
+<img src="images/docker.png"/>
 
 ---
 
@@ -29,7 +28,7 @@ class: middle
 
 * Pain points
 * Containers
-* Docker Containers
+* Docker
 * Docker Compose
 
 ---
