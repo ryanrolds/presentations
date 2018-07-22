@@ -1,6 +1,6 @@
 # Docker
 
-Slides use [remark](https://remarkjs.com/#1). Outline and diagrams were made using LibreOffice Writer and Draw.
+Slides use [remark](https://remarkjs.com/#1). 
 
 ## Setup
 
