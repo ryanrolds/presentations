@@ -152,7 +152,7 @@ const db = require('./src/db');
 
 app.get('/', (req, res) => {
   db.incCount(req.connection.remoteAddress).then((result) => {
-    res.send('Hello World! You have visited this page ' + vresult.rows[0].value);
+    res.send('Hello World! You have visited this page ' + result.rows[0].value);
   }).catch((err) => {
     console.error(err);
     res.status(500).send('Error accessing database');
