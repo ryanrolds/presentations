@@ -20,8 +20,8 @@ class: middle, center
 
 Raise your hand. 
 
-Slide: https://github.com/ryanrolds/docker_presentation
-Code: https://github.com/ryanrolds/docker_pres_frontend
+https://github.com/ryanrolds/docker_presentation
+https://github.com/ryanrolds/docker_pres_frontend
 
 ---
 
@@ -127,14 +127,17 @@ class: middle
 class: middle
 
 # Directory
-
-```
+```bash
 $ ls -l
--rw-rw-rw- 1 ryan ryan   120 Jun 30 17:21 Dockerfile
--rw-rw-rw- 1 ryan ryan   496 Jun 30 18:57 index.js
+-rw-rw-rw- 1 ryan ryan   618 Jul 22 17:12 docker-compose.yml
+-rw-rw-rw- 1 ryan ryan   120 Jul 22 13:19 Dockerfile
+-rw-rw-rw- 1 ryan ryan   780 Jul 22 17:33 index.js
+drwxrwxrwx 1 ryan ryan   512 Jul 22 17:19 migrations
+drwxrwxrwx 1 ryan ryan   512 Jul 22 16:26 node_modules
 -rw-rw-rw- 1 ryan ryan   252 Jun 30 16:35 package.json
 -rw-rw-rw- 1 ryan ryan 16997 Jun 30 16:35 package-lock.json
--rw-rw-rw- 1 ryan ryan   203 Jun 30 18:56 README.md
+-rw-rw-rw- 1 ryan ryan    94 Jul 22 16:31 README.md
+drwxrwxrwx 1 ryan ryan   512 Jul 22 17:29 src
 ```
 
 ---
@@ -142,13 +145,19 @@ $ ls -l
 class: middle
 
 # Application code
-
-```
+```javascript
 const http = require('http');
-const express = require('express');
-const app = express();
+const express = require('express')();
+const db = require('./src/db');
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/', (req, res) => {
+  db.incCount(req.connection.remoteAddress).then((result) => {
+    res.send('Hello World! You have visited this page ' + vresult.rows[0].value);
+  }).catch((err) => {
+    console.error(err);
+    res.status(500).send('Error accessing database');
+  });
+});
 
 const server = http.createServer(app);
 server.listen(8080, () => console.log('Example app listening on port 8080!'));
@@ -156,9 +165,10 @@ server.listen(8080, () => console.log('Example app listening on port 8080!'));
 
 ---
 
-# Dockerfile
+class: middle
 
-```
+# Dockerfile
+```dockerfile
 FROM node:10
 WORKDIR /app
 ADD . /app
@@ -170,6 +180,7 @@ CMD ["node", "index.js"]
 
 ---
 
+class: middle
 
 # Docker Images
 
@@ -179,9 +190,11 @@ CMD ["node", "index.js"]
 
 ---
 
+class: middle
+
 # Building & Running
 
-```
+```bash
 $ docker build -t frontend .
 Sending build context to Docker daemon  84.99kB
 Step 1/7 : FROM node:10
@@ -197,16 +210,16 @@ Successfully tagged frontend:latest
 
 ---
 
+class: middle
+
 # Running the image
 
-## Foreground
-```
+```bash
 $ docker run frontend
 Example app listening on port 8080!
 ```
 
-## Background
-```
+```bash
 $ docker run -d frontend
 6f45e31079108354d91b30570fed9ed451e50a17dcefe80fb3f73946ce7c240f
 $ docker ps
@@ -216,14 +229,15 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 ---
 
-# Ports
+class: middle
 
-```
+# Ports
+```bash
 $ curl http://localhost:8080
 curl: (7) Failed to connect to localhost port 8080: Connection refused
 ```
 
-```
+```bash
 $ docker stop affectionate_curran
 $ docker rm affectionate_curran
 
@@ -235,13 +249,15 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 fe3b31187149        frontend            "node index.js"     About a minute ago   Up About a minute   0.0.0.0:8080->8080/tcp   angry_darwin
 
 $ curl http://localhost:8080
-Hello World!
+Error accessing database
 ```
 
 ---
 
+class: middle
+
 # Logs
-```
+```bash
 $ docker logs angry_darwin
 Example app listening on port 8080!
 ```
@@ -251,57 +267,44 @@ Example app listening on port 8080!
 
 ---
 
+class: middle
+
 # DB & Migrations
 * Spin up PostgreSQL database
 * Run database migrations
 
 ---
 
+class: middle
+
 # Docker Compose
 
-* Simplifies managing multiple container
+* Simplifies managing multiple containers
 * Makes starting/stopping local env easy
 
 ---
 
+class: middle
+
 # docker-compose.yml
-```
+```yaml
 version: '3.3'
 
 services:
   db:
-    image: postgres:9.6
-    restart: always
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: frontend
-      POSTGRES_DB: frontend
+    ...
   migrations:
-    build:
-      context: migrations
-      dockerfile: Dockerfile
-    depends_on:
-      - db
-    environment:
-      DATABASE_URL: postgresql://frontend:password@db:5432/frontend
+    ...
   frontend:
-    build: .
-    depends_on:
-      - db
-      - migrations
-    ports:
-      - "8000:8080"
-    restart: always
-    environment:
-      DATABASE_URL: postgresql://frontend:password@db:5432/frontend
+    ...
 ```
 
 ---
 
+class: middle
+
 # DB service
-```
+```yaml
 services:
   db:
     image: postgres:9.6
@@ -316,8 +319,10 @@ services:
 
 ---
 
+class: middle
+
 # Migrations service
-```
+```yaml
 services:
   migrations:
     build:
@@ -331,8 +336,10 @@ services:
 
 ---
 
-# Frontent service
-```
+class: middle
+
+# Frontend service
+```yaml
 services:
   frontend:
     build: .
@@ -340,17 +347,18 @@ services:
       - db
       - migrations
     ports:
-      - "8000:8080"
+      - "8080:8080"
     restart: always
     environment:
       DATABASE_URL: postgresql://frontend:password@db:5432/frontend
-``
+```
 
 ---
 
-# Starting all the services
+class: middle
 
-```
+# Start in foreground
+```bash
 $ docker-compose up --build
 ...
 Starting docker_pres_frontend_db_1 ... done
@@ -369,15 +377,25 @@ frontend_1    | Example app listening on port 8080!
 
 ---
 
-# Start all services in background
-```
+class: middle
+
+# Start in background
+```bash
 $ docker-compose up -d
 Starting docker_pres_frontend_db_1 ... done
 Starting docker_pres_frontend_migrations_1 ... done
 Starting docker_pres_frontend_frontend_1   ... done
+$ docker-compose ps
+              Name                             Command              State            Ports
+---------------------------------------------------------------------------------------------------
+docker_pres_frontend_db_1           docker-entrypoint.sh postgres   Up       0.0.0.0:5432->5432/tcp
+docker_pres_frontend_frontend_1     node index.js                   Up       0.0.0.0:8000->8080/tcp
+docker_pres_frontend_migrations_1   node index.js                   Exit 0
 ```
 
 ---
+
+class: middle
 
 # Developer environments
 
@@ -396,11 +414,13 @@ class: middle
 
 Install Docker and dockerize your dev environment.
 
-Lots of great information here: https://docs.docker.com/get-started/
+Lots of great information at https://docs.docker.com/get-started/
 
 ---
 
-# Questions
+class: middle, center
+
+# Questions?
 
 ---
 
