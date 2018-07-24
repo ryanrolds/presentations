@@ -108,25 +108,6 @@ class: middle
 
 class: middle
 
-# Virtual Machines
-
-* Better security options
-* LXD is pretty nice
-
----
-
-class: middle
-
-# Containers
-
-* Many implementations
-* Great when you're not the hardware owner
-* Can smooth out shipping code to the cloud
-
----
-
-class: middle
-
 # Docker Containers
 
 * Very popular container solution
@@ -252,8 +233,10 @@ Example app listening on port 8080!
 $ docker run -d frontend
 6f45e31079108354d91b30570fed9ed451e50a17dcefe80fb3f73946ce7c240f
 $ docker ps
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-6f45e3107910        frontend            "node index.js"     2 seconds ago       Up 1 second         8080/tcp            affectionate_curran
+CONTAINER ID        IMAGE               COMMAND             CREATED             
+6f45e3107910        frontend            "node index.js"     2 seconds ago
+STATUS              PORTS               NAMES
+Up 1 second         8080/tcp            affectionate_curran
 ```
 
 ---
@@ -264,18 +247,17 @@ class: middle
 ```bash
 $ curl http://localhost:8080
 curl: (7) Failed to connect to localhost port 8080: Connection refused
-```
 
-```bash
-$ docker stop affectionate_curran
-$ docker rm affectionate_curran
+$ docker stop affectionate_curran && docker rm affectionate_curran
 
 $ docker run -d -p 8080:8080 frontend
 fe3b31187149deec2eef99c2c901dfcaa76fd6c106257950d0e75f45abc6bf4e
 
 $ docker ps
-CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS                    NAMES
-fe3b31187149        frontend            "node index.js"     About a minute ago   Up About a minute   0.0.0.0:8080->8080/tcp   angry_darwin
+CONTAINER ID        IMAGE               COMMAND             CREATED
+fe3b31187149        frontend            "node index.js"     About a minute ago
+STATUS              PORTS                    NAMES
+Up About a minute   0.0.0.0:8080->8080/tcp   angry_darwin
 
 $ curl http://localhost:8080
 Error accessing database
@@ -302,6 +284,18 @@ class: middle
 * Spin up PostgreSQL database
 * Run database migrations
 
+## Create PG container
+```bash
+$ docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=password \ 
+-e POSTGRES_USER=frontend -e POSTGRES_DB=frontend postgres:9.6
+75dee7ced317c8e2c1c4df78eb07207215021d9a0368e2729f1b182cedc2e8bd
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED
+75dee7ced317        postgres:9.6        "docker-entrypoint..."   11 seconds ago
+STATUS              PORTS                    NAMES
+Up 10 seconds       0.0.0.0:5432->5432/tcp   angry_jang
+```
+
 ---
 
 class: middle
@@ -310,6 +304,18 @@ class: middle
 
 * Simplifies managing multiple containers
 * Makes starting/stopping local env easy
+
+## So much easier
+```bash
+$ docker-compose up -d
+Starting docker_pres_frontend_db_1 ... done
+Starting docker_pres_frontend_migrations_1 ... done
+Starting docker_pres_frontend_frontend_1   ... done
+$ docker-compose stop
+Stopping docker_pres_frontend_frontend_1 ... done
+Stopping docker_pres_frontend_db_1       ... done
+$ docker-compose pull
+```
 
 ---
 
