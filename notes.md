@@ -16,11 +16,8 @@
 * Pain Points
   * Docker solves a lot of pain points
   * When you're working on teams people are shipping code
-  * Often you don't even know they shipped the code
-  * You can easily setup your own local env
   * Easy to pull other devlopers work between tasks
-  * It does not require a sys admin skillset like VMs do
-  * Because you have your own local env, you don't have to worry as much about interrupting others while updating shared enviornments, like test or staging.
+  * You can easily setup your own local env
   * Once implemented Docker at your company, onboarding new developers can be as easy as checking at a repo and run some commands from a README
 * Micro vs Monolitic
   * Docker helps both
@@ -103,7 +100,7 @@
   * We can define one yaml file and starting, stopping, updating all become one liners
 * docker-compose.yml
   * So, this yaml file. 
-  * It pretty much takes all the switches and details we provide docker build and puts them in a file
+  * It pretty much takes all the switches and details we provide docker run and puts them in a file
   * This file can be checked in to a repo, that repo can be checked out by your new hire, and they can have their dev env up in the time it takes to pull the images and/or build the app.
   * The file contains a version, the Docker devs are actively extending options in this file
   * And a collection of services, in our file we have db, migrations, and frontend
@@ -133,12 +130,16 @@
   * We can run the same command with a -d.
   * All the same stuff as our last slide happen, but it's in the background.
   * We can use docker-compose ps to look at the status of our defined containers
+* Updating the containers
+  * Incase someone on our team added a service we git pull
+  * Then we pull the latest images
+  * And lastely we run docker up with --build to build the in-repo containers
 * Developer environments
   * And that's pretty much it, but there are some quick things to keep in mind
-  * You can have a private Docker image repo, just like you have a private repo, you're org can have a private image repo
-  * If you make a git repo with just the docker-compose.yml and a README that points to images build by your build server and uploaded to your private image repo
-  * You can stop containers you want to work and start them from the services git repo
-  * It's common mount the repo in the container and hot reload on local file changes for quick interations
+  * Your org can have a private image repo
+  * Your org's build server can create and upload new images
+  * Check your docker-compose.yml in to an env repo
+  * It's possible to have the container main your local filesystem, allow hot reload
 * What next?
   * Install it, seriously, if you're not already using you're just wasting time
   * Check out the Docker docs for more details, they are super well written

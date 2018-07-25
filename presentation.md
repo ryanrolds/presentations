@@ -398,6 +398,18 @@ docker_pres_frontend_db_1           docker-entrypoint.sh postgres   Up       0.0
 docker_pres_frontend_frontend_1     node index.js                   Up       0.0.0.0:8000->8080/tcp
 docker_pres_frontend_migrations_1   node index.js                   Exit 0
 ```
+---
+
+# Updating the containers
+
+```
+$ git pull
+$ docker pull
+Pulling db         ... done
+Pulling migrations ... done
+Pulling frontend   ... done
+$ docker up -d --build
+```
 
 ---
 
@@ -405,11 +417,10 @@ class: middle
 
 # Developer environments
 
-* Private Docker image repo
-* A dev enviornment repo
-* Stop and remove services
-* Clone microservice repo
-* `docker-compose.yml` in service repo starts service in dev env network
+* Use a private image repo
+* Have build server create images and upload images
+* Check the docker-compose.yml in to an env repo
+* Add docker-compose.yml to your service repos
 * Implement hot reload (watcher) to rebuild and restart service container
 
 ---
