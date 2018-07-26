@@ -20,8 +20,8 @@ class: middle, center
 
 Raise your hand. 
 
-https://github.com/ryanrolds/docker_presentation
-https://github.com/ryanrolds/docker_pres_frontend
+https://github.com/ryanrolds/docker_presentation_slides
+https://github.com/ryanrolds/docker_presentation_code
 
 ---
 
