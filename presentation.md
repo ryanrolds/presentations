@@ -59,7 +59,7 @@ class: middle
 
 class: middle
 
-# Routine maintenance
+# Routine Maintenance
 
 * Updating databases is annoying
 * Not everyone is a sys admin
@@ -71,7 +71,7 @@ class: middle
 
 # Containers vs. VMs
 
-* Are Virtual Machines deprecated?
+* Are virtual machines deprecated?
 * Do you need the extra OS boundary?
 
 ---
@@ -87,7 +87,7 @@ class: middle
 # Docker Containers
 
 * Very popular container solution
-* All containers on a host share network/storage
+* All containers on a host share network and storage
 
 ---
 
@@ -103,7 +103,7 @@ class: middle
 
 class: middle
 
-# Our repo
+# Our Repo
 
 * Node.js App
 * Responds to all requests with a view counter
@@ -171,7 +171,7 @@ class: middle
 # Docker Images
 
 * Docker Hub has over 10k images
-* All the popular services have containers
+* All the popular services have images
 * It's easy to publish your own
 
 ---
@@ -198,7 +198,7 @@ Successfully tagged frontend:latest
 
 class: middle
 
-# Running the image
+# Running The Image
 
 ```bash
 $ docker run frontend
@@ -249,8 +249,8 @@ $ docker logs angry_darwin
 Example app listening on port 8080!
 ```
 ## Important switches
-* -f, --follow     Follow log output
-* --tail string    Number of lines to show from the end of the logs (default "all")
+* -f, --follow -- Follow log output
+* --tail string -- Number of lines to show from the end of the logs (default "all")
 
 ---
 
@@ -314,7 +314,7 @@ services:
 
 class: middle
 
-# DB service
+# DB Service
 ```yaml
 services:
   db:
@@ -332,7 +332,7 @@ services:
 
 class: middle
 
-# Migrations service
+# Migrations Service
 ```yaml
 services:
   migrations:
@@ -349,7 +349,7 @@ services:
 
 class: middle
 
-# Frontend service
+# Frontend Service
 ```yaml
 services:
   frontend:
@@ -368,7 +368,7 @@ services:
 
 class: middle
 
-# Start in foreground
+# Start In Foreground
 ```bash
 $ docker-compose up --build
 ...
@@ -390,7 +390,7 @@ frontend_1    | Example app listening on port 8080!
 
 class: middle
 
-# Start in background
+# Start In Background
 ```bash
 $ docker-compose up -d
 Starting docker_pres_frontend_db_1 ... done
@@ -405,7 +405,7 @@ docker_pres_frontend_migrations_1   node index.js                   Exit 0
 ```
 ---
 
-# Updating the containers
+# Updating The Containers
 
 ```bash
 $ git pull
