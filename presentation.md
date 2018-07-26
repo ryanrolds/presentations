@@ -59,7 +59,7 @@ class: middle
 
 class: middle
 
-# Setup & Maint.
+# Routine maintenance
 
 * Updating databases is annoying
 * Not everyone is a sys admin
@@ -74,6 +74,11 @@ class: middle
 * Are Virtual Machines deprecated?
 * Do you need the extra OS boundary?
 
+---
+
+class: no-margins
+
+<img src="images/vms_containers.png"/>
 
 ---
 
@@ -402,13 +407,16 @@ docker_pres_frontend_migrations_1   node index.js                   Exit 0
 
 # Updating the containers
 
-```
+```bash
 $ git pull
+...
 $ docker pull
 Pulling db         ... done
 Pulling migrations ... done
 Pulling frontend   ... done
+
 $ docker up -d --build
+...
 ```
 
 ---
