@@ -1,8 +1,7 @@
-files = header.html\
-	presentation.md\
-	footer.html
+MARKDOWN=$(wildcard slides/*.md)
+HTML=$(MARKDOWN:.md=.html)
 
-all: index.html
+all: $(HTML)
 
-index.html: ${files}
-	cat > $@ $^
+%.html: %.md
+	cat header.html $^ footer.html > $(notdir $@)
