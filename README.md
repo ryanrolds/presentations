@@ -10,11 +10,11 @@ Slides use [remark](https://remarkjs.com/#1).
 
     $ make
 
-Then open index.html in your browser.
+HTML for each slide file will be built.
 
 ## Making changes
 
-Update presentation.md and run `make`. The format of the md file should be obvious. Make simply concatinates header.html, presentation.md, and footer.html. See the Makefile for details.
+Update the `.md` file in `slides` and run `make`. The format of the md file should be obvious. Make simply concatinates header.html, slides/%.md, and footer.html. See the Makefile for details.
 
 ## License
 
