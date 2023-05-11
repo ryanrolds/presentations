@@ -28,15 +28,6 @@ class: middle
 
 # Overview
 
-* Pain points
-* Containers
-* Docker
-* Docker Compose
-
----
-
-
-
 ---
 
 class: middle
