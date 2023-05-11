@@ -7,9 +7,9 @@
 
 ## What is CI/CD?
 * Continuous Integration
-  * Linting, building, testing, image pushing
+  * Linting, building, testing
 * Continuous Deployment
-  * Defining infrastructure, deploying, testing
+  * Images, Infrastructure, Deployments
 
 ## Is it worth it?
 * Benefits
@@ -26,7 +26,7 @@
 * Commits, Branches, Pull Requests
 * Runners
   * GitHub Actions (free)
-  * Your Cloud Providers (AWS, GCP, Azure)
+  * Your cloud providers
   * ArgoCD (not for CI)
   * Jenkins (deprecated)
   * Many more
@@ -41,12 +41,20 @@
 ## Deployment 
 * Docker images
 * Infrastructure as Code
+  * Terraform 
+  * Your cloud provider's
+  * Helm (Kubernetes)
 * Environments (Test, Staging, Production)
   * Why no QA?
 * Gates
   * Branches
   * Baking
   * GitOps
+* Secrets management
+  * SOPS
+  * GitHub Secrets
+  * Your cloud provider's
+  * Many more
 
 ## What does CI/CD look like?
 * Pull Requests
