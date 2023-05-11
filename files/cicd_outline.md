@@ -7,25 +7,25 @@
 
 ## What is CI/CD?
 * Continuous Integration
-  * Linting, building, testing
+  * Checkout, lint, build, test
 * Continuous Deployment
-  * Images, Infrastructure, Deployments
+  * Images, Infrastructure, Gates
 
 ## Is it worth it?
 * Benefits
   * Faster developer loop
-  * 
+  * TODO: more
 * For teams?
   * Easier onboarding
 * For individuals?
   * Concepts are still useful
-  * Can be done locally and moved to the Cloud later
+  * Can be done locally and duplicated in the Cloud later
   * Taskfile/Makefile
 
 ## Continuous?
 * Commits, Branches, Pull Requests
 * Runners
-  * GitHub Actions (free)
+  * GitHub Actions
   * Your cloud providers
   * ArgoCD (not for CI)
   * Jenkins (deprecated)
@@ -34,9 +34,12 @@
   * Love it, hate it, learn it
 
 ## Integration
+* Checkout source code
+* Install dependencies and tools
 * Lint
 * Build
 * Test
+* Taskfile/Makefile
 
 ## Deployment 
 * Docker images
@@ -51,9 +54,9 @@
   * Baking
   * GitOps
 * Secrets management
-  * SOPS
   * GitHub Secrets
   * Your cloud provider's
+  * SOPS
   * Many more
 
 ## What does CI/CD look like?
