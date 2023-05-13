@@ -6,27 +6,27 @@
 * How do you do it?
 
 ## What is CI/CD?
-* Continuous Integration
-  * Checkout, lint, build, test
-* Continuous Deployment
-  * Images, Infrastructure, Gates
+* Automation of:
+  * Continuous Integration
+    * Checkout, lint, build, test
+  * Continuous Deployment
+    * Images, Infrastructure as Code, Gates, Secrets
 
 ## Is it worth it?
 * Benefits
-  * Faster developer loop
-  * TODO: more
-* For teams?
-  * Easier onboarding
-* For individuals?
-  * Concepts are still useful
-  * Can be done locally and duplicated in the Cloud later
+  * Smaller changes, fewer bugs shipped, faster feedback
+  * Developers can focus on code, not process
+  * Provides a place to handle team/org standards
+* What about individuals?
+  * Automation is still useful
+  * Can be done locally and moved to the Cloud later
   * Taskfile/Makefile
 
 ## Continuous?
 * Commits, Branches, Pull Requests
-* Runners
+* Workflow Engines
   * GitHub Actions
-  * Your cloud providers
+  * Your cloud provider's
   * ArgoCD (not for CI)
   * Jenkins (deprecated)
   * Many more
@@ -34,22 +34,29 @@
   * Love it, hate it, learn it
 
 ## Integration
-* Checkout source code
-* Install dependencies and tools
-* Lint
-* Build
-* Test
-* Taskfile/Makefile
+* Can I ship this?
+* Steps
+  * Checkout source code
+  * Install dependencies and tools
+  * Lint
+  * Build
+  * Test
+  * Image building
+* Waiting for CI to run isn't fun
+  * Steps runnable locally
+  * Maintenance is required
+  * Taskfile/Makefile
 
 ## Deployment 
-* Docker images
+* Image pushing
 * Infrastructure as Code
+  * Pets vs Cattle
   * Terraform 
   * Your cloud provider's
   * Helm (Kubernetes)
 * Environments (Test, Staging, Production)
-  * Why no QA?
 * Gates
+  * Manual Approval
   * Branches
   * Baking
   * GitOps
@@ -61,7 +68,7 @@
 
 ## What does CI/CD look like?
 * Pull Requests
-* Build Pipelines
+* Workflows
 * Deploying to Test/Staging/QA
 * Deploying to Production
 
@@ -69,3 +76,4 @@
 * Put your projects on GitHub
 * Create a Taskfile/Makefile
 * Run CI with GitHub Actions
+* Build out CI, add CD later
