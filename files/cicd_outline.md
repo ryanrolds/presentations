@@ -12,15 +12,23 @@
   * Continuous Deployment
     * Images, Infrastructure as Code, Gates, Secrets
 
-## Is it worth it?
+## Is CI/CD worth it?
+* Automation
+  * Humans don't perform the same action the same way every time
+  * Inconsistency will cause incidents and data problems
+  * Faster & continous
+  * Everyone can execute deployments
 * Benefits
-  * Smaller changes, fewer bugs shipped, faster feedback
+  * Shipping smaller, fewer bugs
+  * Faster feedback
   * Developers can focus on code, not process
   * Provides a place to handle team/org standards
-* What about individuals?
-  * Automation is still useful
-  * Can be done locally and moved to the Cloud later
-  * Taskfile/Makefile
+  * You can take vacations
+* What about individuals and small teams?
+  * If applied judiciously, it will save you time
+    * https://xkcd.com/1205/
+  * You will do less firefighting
+  * Steps can be run locally and moved a workflow engine later
 
 ## Continuous?
 * Commits, Branches, Pull Requests
