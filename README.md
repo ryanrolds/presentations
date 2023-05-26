@@ -20,7 +20,7 @@ HTML for each slide file will be built.
 docker run -v $(pwd):/usr/share/nginx/html:ro -p 8080:80 nginx
 ```
 
-https://localhost:8080/<presentation>.html
+https://localhost:8080/presentation.html
 
 ## Making changes
 
