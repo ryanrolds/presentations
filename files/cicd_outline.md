@@ -2,8 +2,8 @@
 
 ## Overview
 * What is CI/CD?
-* Why do it?
-* How do you do it?
+* It's value
+* I
 
 ## What is CI/CD?
 * Automation of:
@@ -38,8 +38,7 @@
   * ArgoCD (not for CI)
   * Jenkins (deprecated)
   * Many more
-* YAML
-  * Love it, hate it, learn it
+
 
 ## Integration
 * Can I ship this?
@@ -75,12 +74,43 @@
   * Many more
 
 ## What does CI/CD look like?
-* Pull Requests
+* Commits & Pull Requests
+* Branches
 * Workflows
 * Deploying to Test/Staging/QA
-* Deploying to Production
+* Promoting to Production
 
-# What next?
+### Commits & Pull Requests
+
+### Branches
+* Trunk-based 
+* GitFlow
+* Branches for different environment
+* GitOps
+
+### Workflows
+* Run CI
+* Build and push Docker iamge
+* Deploy if needed
+* Build confidence
+* Promote
+* YAML
+  * Love it, hate it, learn it
+* GitHub Actions example
+
+### Deploy to Pre-production
+* Deploy all merges to main branch
+
+### Build confedence
+* Manual validation
+* Automatic validation
+
+### Promoting to Production
+* Branches
+* GitOps
+* Use the same Docker images
+
+### What next?
 * Put your projects on GitHub
 * Create a Taskfile/Makefile
 * Run CI with GitHub Actions
