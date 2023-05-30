@@ -10,7 +10,7 @@ spec:
     targetRevision: master
     helm:
       releaseName: presentations
-    path: chart
+    path: ./chart/
   destination:
     server: "https://kubernetes.default.svc"
     namespace: presentations
