@@ -8,7 +8,7 @@ class: middle
 # 🫖About me
 
 * Software Engineer 👨‍💻
-* ryanrolds@gmail.com ✉️
+* ryan.r.olds@gmail.com ✉️
 * github.com/ryanrolds 🕸️
 
 ---
