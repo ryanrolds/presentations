@@ -1,5 +1,16 @@
+FROM alpine:3.17
+
+RUN apk --no-cache add ca-certificates make
+
+WORKDIR /build
+COPY . .
+
+RUN make all
+
 FROM nginx:1.25.0-alpine3.17-slim
 
-COPY js /usr/share/nginx/html/js/
-COPY images /usr/share/nginx/html/images/
-COPY *.html /usr/share/nginx/html/
+WORKDIR /usr/share/nginx/html/
+
+COPY --from=0 /build/js ./js
+COPY --from=0 /build/images ./images
+COPY --from=0 /build/*.html .
