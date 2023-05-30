@@ -13,4 +13,4 @@ WORKDIR /usr/share/nginx/html/
 
 COPY --from=0 /build/js ./js
 COPY --from=0 /build/images ./images
-COPY --from=0 /build/*.html .
+COPY --from=0 /build/*.html ./
