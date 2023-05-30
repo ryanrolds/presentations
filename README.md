@@ -27,7 +27,7 @@ HTML for each slide file will be built.
 docker-compose up
 ```
 
-https://localhost:8080/presentation.html
+https://localhost:8888/presentation.html
 
 ## Making changes
 
