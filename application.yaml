@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: presentations
+  namespace: argocd
+spec:
+  project: presentations
+  source:
+    chart: chart
+    repoURL: https://github.com/ryanrolds/presentations
+    targetRevision: master
+    helm:
+      releaseName: presentations
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: presentations

@@ -6,7 +6,8 @@ Slides use [remark](https://remarkjs.com/#1).
 ## Requirements
 
 * Make
-* Docker
+* Docker - https://docs.docker.com/get-docker/
+* Helm - https://helm.sh/docs/intro/install/
 
 ## Setup
 
