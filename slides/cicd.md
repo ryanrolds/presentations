@@ -59,9 +59,9 @@ class: middle
 * If applied judiciously, it will save you time 💰
 
 ---
-class: center, middle
+class: no-margins,center,middle
 
-<img src="https://imgs.xkcd.com/comics/is_it_worth_the_time.png">
+<img class="height" src="https://imgs.xkcd.com/comics/is_it_worth_the_time.png">
 
 ---
 class: middle

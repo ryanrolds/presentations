@@ -76,7 +76,7 @@ class: middle
 
 ---
 
-class: no-margins
+class: no-margins,center
 
 <img src="images/vms_containers.png"/>
 

@@ -2,7 +2,6 @@ on:
   push:
     branches:
     - master
-
 jobs:
   build:
     name: Build
@@ -25,7 +24,6 @@ jobs:
         with:
           tags: |
             docker.pedanticorderliness.com/presentations:${{ github.sha }}
-            docker.pedanticorderliness.com/presentations:latest
           push: true
       - name: Update values.yaml
         uses: fjogeleit/yaml-update-action@main

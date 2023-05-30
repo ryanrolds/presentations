@@ -42,7 +42,7 @@ class: middle
 
 ---
 
-<img src="images/single_server.png"/>
+<img class="width" src="images/single_server.png"/>
 
 ---
 
@@ -77,23 +77,23 @@ class: middle
 
 ---
 
-<img src="images/cdn.png"/>
+<img class="width" src="images/cdn.png"/>
 
 ---
 
-<img src="images/db_server.png"/>
+<img class="width" src="images/db_server.png"/>
 
 ---
 
-<img src="images/load_balancer.png"/>
+<img class="width" src="images/load_balancer.png"/>
 
 ---
 
-<img src="images/db_cluster.png"/>
+<img class="width" src="images/db_cluster.png"/>
 
 ---
 
-<img src="images/read_write_api.png"/>
+<img class="width" src="images/read_write_api.png"/>
 
 ---
 
@@ -107,7 +107,7 @@ class: middle
 
 ---
 
-<img src="images/message_queue.png"/>
+<img class="width" src="images/message_queue.png"/>
 
 ---
 
