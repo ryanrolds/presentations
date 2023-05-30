@@ -30,7 +30,7 @@ jobs:
       - name: Update values.yaml
         uses: fjogeleit/yaml-update-action@main
         with:
-          valueFile: './chart/values'
+          valueFile: './chart/values.yaml'
           propertyPath: 'image.tag'
           value: ${{ github.sha }}
           commitChange: true
