@@ -1,0 +1,29 @@
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Build HTML
+        run: make all
+      - name: Build plant-metrics images
+        run: docker build .
+      - name: Login to Docker registry
+        uses: docker/login-action@v2
+        with:
+          registry: docker.pedanticorderliness.com
+          username: ${{ secrets.DOCKER_REG_USER }}
+          password: ${{ secrets.DOCKER_REG_PASS }}
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v4
+        with:
+          tags: |
+            docker.pedanticorderliness.com/presentations:${{ github.sha }}
+            docker.pedanticorderliness.com/presentations:latest
+          push: true
