@@ -1,0 +1,22 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: presentations
+  labels:
+    app: presentations
+spec:
+  selector:
+    matchLabels:
+      app: presentations
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: presentations
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: presentations
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

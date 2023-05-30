@@ -6,11 +6,11 @@ metadata:
 spec:
   project: presentations
   source:
-    chart: chart
-    repoURL: https://github.com/ryanrolds/presentations
+    repoURL: https://github.com/ryanrolds/presentations.git
     targetRevision: master
     helm:
       releaseName: presentations
+    path: chart
   destination:
     server: "https://kubernetes.default.svc"
     namespace: presentations
