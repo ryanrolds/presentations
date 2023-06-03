@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: presentations
+  namespace: argocd
+spec:
+  project: presentations
+  source:
+    repoURL: https://github.com/ryanrolds/presentations.git
+    targetRevision: master
+    helm:
+      parameters:
+        - name: ingress
+          value: presentations
+    path: ./chart/
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: presentations
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

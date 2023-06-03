@@ -9,10 +9,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - presentations.pedanticorderliness.com
-      secretName: presentations-tls-key
+        - {{ .Values.ingress }}.pedanticorderliness.com
+      secretName: {{ .Values.ingress }}-tls-key
   rules:
-    - host: presentations.pedanticorderliness.com
+    - host: "{{ .Values.ingress }}.pedanticorderliness.com"
       http:
         paths:
           - path: /
