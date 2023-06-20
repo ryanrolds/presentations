@@ -12,7 +12,7 @@ class: middle
 * github.com/ryanrolds 🕸️
 
 ---
-class: middle, center
+class: middle
 
 # Questions❓ Comments❓
 
@@ -68,24 +68,26 @@ class: middle
 
 # Workflow Engines
 
-* GitHub Actions
-* Your cloud provider's
-* ArgoCD (not for CI)
-* Jenkins (deprecated)
+What runs the things:
+* GitHub Actions 📁
+* Your cloud provider's ☁️
+* ArgoCD (not for CI) 🐙
+* Jenkins (deprecated) 🍵
 * Many more
 
 ---
 class: middle
 
-# Integration
+# What is Integration?
 
-* Is this shippable?
-* Solves "Works on my machine!"
+* Did I building this right? 🏠
+* Does it work as expected? 
+* Can I confidently ship it? 🚢
 
 ---
 class: middle
 
-# Steps
+# Integration Steps
 
 * Checkout source code
 * Install dependencies and tools
@@ -97,7 +99,7 @@ class: middle
 ---
 class: middle
 
-# Waiting for CI to run isn't fun
+# Waiting isn't fun
 
 * Steps runnable locally
 * Maintenance is required
@@ -109,8 +111,9 @@ class: middle
 # Deployment
 
 * Image pushing 
+* Infrastructure
 * Environments (Test, Staging, Production)
-
+* Promotion
 
 ---
 class: middle
@@ -124,7 +127,7 @@ class: middle
 ---
 class: middle
 
-# Gates
+# Promotion
 
 * Manual Approval
 * Branches
