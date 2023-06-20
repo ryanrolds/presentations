@@ -80,8 +80,8 @@ class: middle
 
 # What is Integration?
 
-* Did I building this right? 🏠
-* Does it work as expected? 
+* Did I building this right? 🔧
+* Does it work as expected? 📋
 * Can I confidently ship it? 🚢
 
 ---
@@ -89,31 +89,31 @@ class: middle
 
 # Integration Steps
 
-* Checkout source code
-* Install dependencies and tools
-* Lint
-* Build
-* Test
-* Image building
+* Checkout source code 📝
+* Install dependencies and tools 🧰
+* Lint 🔍
+* Build 🔧
+* Test 📋
+* Image building 🏗️
 
 ---
 class: middle
 
 # Waiting isn't fun
 
-* Steps runnable locally
-* Maintenance is required
-* Taskfile/Makefile
+* Steps runnable locally 👨‍💻
+* Maintenance is required 🪛
+* Taskfile/Makefile 📄
 
 ---
 class: middle
 
 # Deployment
 
-* Image pushing 
-* Infrastructure
+* Image pushing ☁️
+* Infrastructure 🌉
 * Environments (Test, Staging, Production)
-* Promotion
+* Promote 👩‍🔬
 
 ---
 class: middle
@@ -129,18 +129,18 @@ class: middle
 
 # Promotion
 
-* Manual Approval
-* Branches
-* Baking
-* GitOps
+* Manual Approval ✅
+* Branches 🌲
+* Baking 🍰
+* GitOps 😕
 
 ---
 class: middle
 
 # What does CI/CD look like?
 
-* Commits & Pull Requests
-* Branches
+* Commits & Pull Requests ✍️
+* Branches 
 * Workflows
 * Deploying to Test/Staging/QA
 * Promoting to Production
@@ -203,10 +203,13 @@ class: middle
 
 # ⚙️ What next?
 
-* Put your projects on GitHub
 * Create a Taskfile/Makefile
+  * Lint task/target
+  * Build task/target
+  * Test task/target
 * Run CI with GitHub Actions
-* Build out CI, add CD later
+* Build and push Docker image
+* Deploy to the cloud when CI passes
 
 ---
 class: middle, center
