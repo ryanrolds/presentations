@@ -43,11 +43,21 @@ Integration and deployment run automatically on:
 ---
 class: middle
 
+# ⚙️Integration
+
+* Did I building this right? 🔧
+* Does it work as expected? 📋
+* Can I confidently ship it? 🚢
+
+---
+class: middle
+
 # 🕔Is CI/CD worth it?
 
+* More maintenance and tools
 * Inconsistency causes problems 🔥
 * Smaller changes, fewer bugs, faster feedback 🏎️
-* Everyone can execute deployments 🚢
+* Everyone can ship code 🚢
 
 ---
 class: middle
@@ -66,23 +76,41 @@ class: no-margins,center,middle
 ---
 class: middle
 
-# Workflow Engines
+# 🔍What does CI/CD look like?
 
-What runs the things:
-* GitHub Actions 📁
-* Your cloud provider's ☁️
-* ArgoCD (not for CI) 🐙
-* Jenkins (deprecated) 🍵
-* Many more
+* Workflows and IoC 🏭
+* Push commits & merge pull requests ✍️
+* Run integration
+* Deploying to Test/Staging/QA ⛵
+* Promoting to Production 🚢
 
 ---
 class: middle
 
-# What is Integration?
+# 🏭Workflow Engines
 
-* Did I building this right? 🔧
-* Does it work as expected? 📋
-* Can I confidently ship it? 🚢
+* GitHub Actions 📁
+* Jenkins 🍵
+* Your cloud provider's ☁️
+* Many more 💯
+
+---
+class: middle
+
+# Infrastructure as Code
+
+* YAML, DSL, code 🙈
+* Kubernetes ☸
+* Terraform ⛏️
+* Your cloud provider's ☁️
+
+---
+class: middle
+
+# Commits & Pull Requests
+
+* Pushing commit triggers CI workflow ⚙️
+* Mergin PR triggers CI and deployment workflows 🚢
 
 ---
 class: middle
@@ -99,35 +127,25 @@ class: middle
 ---
 class: middle
 
-# Waiting isn't fun
+# 🚢Deployment
 
-* Steps runnable locally 👨‍💻
-* Maintenance is required 🪛
-* Taskfile/Makefile 📄
-
----
-class: middle
-
-# Deployment
-
-* Image pushing ☁️
-* Infrastructure 🌉
-* Environments (Test, Staging, Production)
-* Promote 👩‍🔬
+* Update infrastructure ⛏️
+* Container orchastation ☸
 
 ---
 class: middle
 
-# Infrastructure as Code
+# Build confidence
 
-* Kubernetes ☸
-* Terraform ⛏️
-* Your cloud provider's ☁️
+* Manual tests 📋
+* Scream 😱
+* Dashboards and alerts ❗
+* Automated E2E testing 🤖
 
 ---
 class: middle
 
-# Promotion
+# 🎗️Promotion
 
 * Manual Approval ✅
 * Branches 🌲
@@ -137,79 +155,13 @@ class: middle
 ---
 class: middle
 
-# What does CI/CD look like?
+# ⚙️What next?
 
-* Commits & Pull Requests ✍️
-* Branches 
-* Workflows
-* Deploying to Test/Staging/QA
-* Promoting to Production
-
----
-class: middle
-
-# Commits & Pull Requests
-
----
-class: middle
-
-# Branches
-
-* Trunk-based 
-* GitFlow
-* Branches for different environment
-* GitOps
-
----
-class: middle
-
-# Workflows
-
-* Run CI
-* Build and push Docker iamge
-* Deploy if needed
-* Build confidence
-* Promote
-* YAML
-  * Love it, hate it, learn it
-* GitHub Actions example
-
----
-class: middle
-
-# Deploy to Pre-production
-
-* Deploy all merges to main branch
-
----
-class: middle
-
-# Build confedence
-
-* Manual validation
-* Automatic validation
-
----
-class: middle
-
-# Promoting to Production
-
-* Branches
-* Baking
-* GitOps
-
----
-class: middle
-
-# ⚙️ What next?
-
-* Create a Taskfile/Makefile
-  * Lint task/target
-  * Build task/target
-  * Test task/target
-* Run CI with GitHub Actions
-* Build and push Docker image
-* Deploy to the cloud when CI passes
+* Script for running CI steps 📝
+* Run CI with GitHub Actions 🏃
+* Build and push Docker image 🐋
+* Deploy to the cloud ☸
+* Implement IoC ⛏️
 
 ---
 class: middle, center
@@ -222,4 +174,3 @@ class: middle, center
 # 👏 Thanks
 
 <place holder for next event>
-
