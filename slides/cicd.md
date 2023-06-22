@@ -64,12 +64,12 @@ class: middle
 
 # 🕔Is CI/CD worth it?
 
-* Con: More tools and maintenance 🧰
-* Con: Requires DevOps skillset 
-* Pro: Smaller changes, fewer bugs, faster feedback 🏎️
-* Pro: Developer cadence 🏃
-* Pro: Everyone can ship code 🚢
-* Pro: Leads can take a vacation 🏖️
+* ➖ More tools and maintenance 🧰
+* ➖ Requires DevOps skillset 
+* ➕ Smaller changes, fewer bugs, faster feedback 🏎️
+* ➕ Developer cadence 🏃
+* ➕ Everyone can ship code 🚢
+* ➕ Leads can take a vacation 🏖️
 
 ---
 class: middle
