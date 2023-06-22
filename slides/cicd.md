@@ -47,16 +47,16 @@ class: middle
 # ⚙️Integration
 
 * Does it work as expected? 📋
-* Did I follow team strandards? 🔍
+* Did I follow team standards? 🔍
 * Can I confidently ship it? 🚢
 
 ---
 class: middle
 
-# Deployment
+# 🚢Deployment
 
-* Creating infrastructure 🏗️
-* Deploying application 🚢
+* Create infrastructure 🏗️
+* Deploy application ⚙️
 * Promote to Production 👩‍💻
 
 ---
@@ -88,11 +88,11 @@ class: no-margins,center,middle
 ---
 class: middle
 
-# 🔍What does CI/CD look like?
+# 🔍What does it look like?
 
 * Workflows and IoC 🏭
 * Push commits & merge pull requests ✍️
-* Run integration
+* Run integration 🏃
 * Deploying to Test/Staging/QA ⛵
 * Promoting to Production 🚢
 
@@ -109,7 +109,7 @@ class: middle
 ---
 class: middle
 
-# Infrastructure as Code
+# 🏗️Infrastructure as Code
 
 * YAML, DSL, code 🙈
 * Kubernetes ☸
@@ -119,7 +119,7 @@ class: middle
 ---
 class: middle
 
-# Commits & Pull Requests
+# 🖊️Commits & PRs
 
 * Pushing commit triggers CI workflow ⚙️
 * Mergin PR triggers CI and deployment workflows 🚢
@@ -127,7 +127,7 @@ class: middle
 ---
 class: middle
 
-# Integration Steps
+# ⚙️Integration Steps
 
 * Checkout source code 📝
 * Install dependencies and tools 🧰
@@ -147,7 +147,7 @@ class: middle
 ---
 class: middle
 
-# Build confidence
+# 🏋️‍♀️Build confidence
 
 * Manual tests 📋
 * Scream 😱
@@ -183,6 +183,6 @@ class: middle, center
 ---
 class: middle, center
 
-# 👏 Thanks
+# 👏 Thanks 👏
 
 <place holder for next event>
