@@ -1,6 +1,6 @@
 class: middle, center
 
-<img src="images/docker.png"/>
+<img class="width" src="images/docker.png"/>
 
 ---
 
@@ -78,7 +78,7 @@ class: middle
 
 class: no-margins,center
 
-<img src="images/vms_containers.png"/>
+<img class="width"  src="images/vms_containers.png"/>
 
 ---
 
