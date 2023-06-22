@@ -2,6 +2,7 @@ class: middle, center
 
 # 🏭 CI/CD 🚢
 ## Stop doing the boring stuff
+
 ---
 class: middle
 
@@ -35,7 +36,7 @@ class: middle
 
 # 🔄Continuous
 
-Integration and deployment run automatically on:
+Runs automatically on:
 * Commits ✍️
 * Pull Requests ⬆️
 * Branches 🌲
@@ -45,19 +46,30 @@ class: middle
 
 # ⚙️Integration
 
-* Did I building this right? 🔧
 * Does it work as expected? 📋
+* Did I follow team strandards? 🔍
 * Can I confidently ship it? 🚢
+
+---
+class: middle
+
+# Deployment
+
+* Creating infrastructure 🏗️
+* Deploying application 🚢
+* Promote to Production 👩‍💻
 
 ---
 class: middle
 
 # 🕔Is CI/CD worth it?
 
-* More maintenance and tools
-* Inconsistency causes problems 🔥
-* Smaller changes, fewer bugs, faster feedback 🏎️
-* Everyone can ship code 🚢
+* Con: More tools and maintenance 🧰
+* Con: Requires DevOps skillset 
+* Pro: Smaller changes, fewer bugs, faster feedback 🏎️
+* Pro: Developer cadence 🏃
+* Pro: Everyone can ship code 🚢
+* Pro: Leads can take a vacation 🏖️
 
 ---
 class: middle
