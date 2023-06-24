@@ -42,6 +42,10 @@ while inotifywait -e close_write slides/*; do make all; done
 
 > TODO put the above in it's own container
 
+## Presenting
+
+Use `P` and `C` to control presentation mode and create linked windows.
+
 ## License
 
 MIT
