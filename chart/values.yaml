@@ -1,4 +1,4 @@
 ingress: presentations-dev
 image:
   repository: docker.pedanticorderliness.com/presentations
-  tag: a3ab2540624023f336cc682d6d6d4f175eb1eb7f
+  tag: 6871e69386c04159a9dbda656486602a71540a75
