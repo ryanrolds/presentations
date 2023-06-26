@@ -37,18 +37,18 @@ class: middle, no-dots
 
 ???
 How many people have heard of CI/CD?
-How many people use CI/CD?
-How many have tests, linking, and other other integration steps and runn them manually?
+How many people use Continuous Integration?
+How many people use Continuous Deployment?
 
 ---
 class: middle, no-dots
 
-# 🔄 Continuous
+# 🔄Continuous
 
 Runs automatically on:
 * ✍️ Pushing commits 
 * ⬆️ Merging pull requests 
-* 🌲Select branches 
+* 🌲 Pushing to select branches 
 
 ???
 Really anything can trigger CI/CD, but it's commonly driven by Git.
@@ -59,23 +59,30 @@ Merging pull requests to select branches deploys to specific environments.
 ---
 class: middle, no-dots
 
-# ⚙️ Integration
+# ⚙️Integration
 
 * 📋 Does it work as expected? 
 * 🔍 Did I follow team standards? 
 * 🚢 Can I confidently ship it? 
 
 ???
-
+Integration is about building the software and confirming it works as expected.
+Build, test, lint, etc.
+Northstar is CI passing means you can ship it.
 
 ---
 class: middle, no-dots
 
 # 🚢Deployment
 
-* 🏗️ Create infrastructure 
 * ⚙️ Deploy application 
 * 👩‍💻 Promote to Production 
+* 🏗️ Create infrastructure 
+
+???
+Deployment is very much dependent on your application and where it's being deployed.
+Creating infrastructure is an often overlooked part of deployments.
+Buckets, managed databases, DNS records, etc...
 
 ---
 class: middle, no-dots
@@ -83,11 +90,17 @@ class: middle, no-dots
 # 🕔Is CI/CD worth it?
 
 * ➖ More tools and maintenance 🧰
-* ➖ Requires DevOps skillset 
+* ➖ Requires DevOps skillset 👩‍💻
 * ➕ Smaller changes, fewer bugs, faster feedback 🏎️
 * ➕ Developer cadence 🏃
 * ➕ Everyone can ship code 🚢
-* ➕ Leads can take a vacation 🏖️
+
+???
+CI requires additional tools and the skillset to maintain them.
+CI/CD allows teams to ship more than once a day.
+The changes are smaller and easier to rollback.
+Developers can shift code as fast as they can build confidence.
+No longer is there one person with specifcal access to deploy.
 
 ---
 class: middle, no-dots
@@ -95,24 +108,35 @@ class: middle, no-dots
 # 🚀Small teams?
 
 * 👩‍🚒 Less firefighting 
-* 🏝️ Go on vacations 
+* 🏝️ Leads can go on vaation
 * 💰 If applied judiciously, it will save you time 
+
+???
+Shipping smaller changes and have a clear path to rolling back means less firefighting.
+Leads can go on vacation without worrying about the team's ability to ship.
+CI/CD will save you time, but what is worth the effort is subjective
 
 ---
 class: no-margins,center,middle
 
 <img class="height" src="https://imgs.xkcd.com/comics/is_it_worth_the_time.png">
 
+???
+Divide by 5, only a small number of projects are going to care about the 5 year ROI.
+
 ---
 class: middle,no-dots
 
 # 🔍What does it look like?
 
-* 🏭 Workflows and IoC 
+* 🏭 Workflows and IaC 
 * ✍️ Push commits & merge pull requests 
 * 🏃 Run integration 
 * ⛵ Deploying to Test/Staging/QA 
 * 🚢 Promoting to Production 
+
+???
+So, we know what CI/CD is on paper. What does it look like in practice?
 
 ---
 class: middle, no-dots
@@ -120,9 +144,15 @@ class: middle, no-dots
 # 🏭Workflow Engines
 
 * 📁 GitHub Actions
-* 🍵 Jenkins
 * ☁️ Your cloud provider's
+* 🍵 Jenkins
 * 💯 Many more
+
+???
+The larget decision when implementing CI/CD is the workflow engine.
+GitHub Actions is quickly becoming the standard.
+Cloud Providers have their own offerings.
+Jenkins is still around, but predates IaC and repos being a FCS.
 
 ---
 class: middle, no-dots
@@ -134,13 +164,23 @@ class: middle, no-dots
 * ⛏️ Terraform
 * ☁️ Your cloud provider's
 
+???
+While the Workflow Engine is the largest decision, IaC is the larget change in 
+developer behavior and mental models.
+Not only is your code versioned controlled, but so is your infrastructure.
+
 ---
 class: middle, no-dots
 
 # 🖊️Commits & PRs
 
-* ⚙️ Pushing commit triggers CI workflow
+* ⚙️ Pushing a commit triggers CI workflow
 * 🚢 Merging PR triggers CI and deployment workflows
+
+???
+Major touch points for the everage developer.
+It's entirely driven by changes to Git. 
+No buttons to tigger CI/CD, except for retrying a workflow.
 
 ---
 class: middle, no-dots
@@ -154,6 +194,13 @@ class: middle, no-dots
 * 📋 Test
 * 🪛 Image building
 
+???
+The integration steps are completely dependent on your application and needs.
+Some teams have linters, some don't. 
+Same for test.
+This is also place where quality has the largest downstream impact.
+The primary function of CI is to build confidence in what you're about to ship.
+
 ---
 class: middle, no-dots
 
@@ -162,8 +209,13 @@ class: middle, no-dots
 * ⛏️ Update infrastructure
 * 📦 Container orchestration
 
+???
+Entirely dependent on your application and where it's being deployed.
+Updating infrastructure is often overlooked and added later.
+Not everything uses container orahestration, but it's quickly becoming the standard.
+
 ---
-class: middle, no-dots
+class: middle, no-dots6
 
 # 🏋️‍♀️Build confidence
 
@@ -171,6 +223,9 @@ class: middle, no-dots
 * 😱 Scream
 * ❗ Dashboards and alerts
 * 🤖 Automated E2E testing
+
+???
+
 
 ---
 class: middle, no-dots
@@ -180,6 +235,8 @@ class: middle, no-dots
 * ✅ Manual Approval
 * 🌲 Branches
 * 🍰 Baking
+
+???
 
 ---
 class: middle, no-dots
@@ -195,7 +252,6 @@ class: middle, no-dots
 ├── chart
 │   ├── Chart.yaml
 │   ├── templates
-│   │   ├── _helpers.tpl
 │   │   ├── deployment.yaml
 │   │   ├── ingress.yaml
 │   │   └── service.yaml
@@ -203,6 +259,12 @@ class: middle, no-dots
 ├── docker-compose.yml
 └── Makefile
 ```
+
+???
+Github Actions
+Helm chart
+Docker Compose for local
+Makefile for CI steps
 
 ---
 class: middle, no-dots
@@ -221,6 +283,8 @@ jobs:
     steps:
       ...
 ```
+
+???
 
 ---
 class: middle, no-dots
@@ -405,7 +469,7 @@ class: middle, no-dots
 * 🏃 Run CI with GitHub Actions
 * 🐋 Build and push Docker image
 * 📦 Deploy to the cloud
-* ⛏️ Implement IoC
+* ⛏️ Implement IaC
 
 ---
 class: middle, center
