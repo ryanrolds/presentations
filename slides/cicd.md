@@ -220,7 +220,7 @@ Not everything uses container orahestration, but it's quickly becoming the stand
 ---
 class: middle, no-dots
 
-# 🏋️‍♀️Build confidence to promote
+# 🏋️‍♀️Build confidence
 
 * 📋 Manual tests
 * 🤖 Automated E2E testing
