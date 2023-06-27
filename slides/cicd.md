@@ -92,7 +92,7 @@ class: middle, no-dots
 * ➖ More tools and maintenance 🧰
 * ➖ Requires DevOps skillset 👩‍💻
 * ➕ Smaller changes, fewer bugs, faster feedback 🏎️
-* ➕ Stop repetative non-cognative things 😴
+* ➕ Stop doing repetative non-cognative things 😴
 * ➕ Everyone can ship 🚢
 
 ???
