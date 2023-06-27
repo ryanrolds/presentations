@@ -1,7 +1,7 @@
 class: middle, center
 
 # 🏭 CI/CD 🚢
-## Stop doing the boring stuff
+## 😴 Stop doing the boring stuff 😴
 
 ???
 Welcome
@@ -92,14 +92,14 @@ class: middle, no-dots
 * ➖ More tools and maintenance 🧰
 * ➖ Requires DevOps skillset 👩‍💻
 * ➕ Smaller changes, fewer bugs, faster feedback 🏎️
-* ➕ Developer cadence 🏃
-* ➕ Everyone can ship code 🚢
+* ➕ Stop repetative non-cognative things 😴
+* ➕ Everyone can ship 🚢
 
 ???
 CI requires additional tools and the skillset to maintain them.
-CI/CD allows teams to ship more than once a day.
 The changes are smaller and easier to rollback.
-Developers can shift code as fast as they can build confidence.
+Developers can ship code as fast as they can build confidence.
+If it's repetative and non-cognative, don't do it.
 No longer is there one person with specifcal access to deploy.
 
 ---
@@ -108,7 +108,7 @@ class: middle, no-dots
 # 🚀Small teams?
 
 * 👩‍🚒 Less firefighting 
-* 🏝️ Leads can go on vaation
+* 🏝️ Leads can go on vacation
 * 💰 If applied judiciously, it will save you time 
 
 ???
@@ -125,7 +125,7 @@ class: no-margins,center,middle
 Divide by 5, only a small number of projects are going to care about the 5 year ROI.
 
 ---
-class: middle,no-dots
+class: middle, no-dots
 
 # 🔍What does it look like?
 
@@ -137,6 +137,9 @@ class: middle,no-dots
 
 ???
 So, we know what CI/CD is on paper. What does it look like in practice?
+Workflows and IaC are the largest changes.
+Pushing commits and merging pull requests are the primary triggers.
+Running integration and deployments are automatic or push botton
 
 ---
 class: middle, no-dots
@@ -199,7 +202,7 @@ The integration steps are completely dependent on your application and needs.
 Some teams have linters, some don't. 
 Same for test.
 This is also place where quality has the largest downstream impact.
-The primary function of CI is to build confidence in what you're about to ship.
+The primary function of CI is to build confidence in what you're wanting to ship.
 
 ---
 class: middle, no-dots
@@ -215,17 +218,19 @@ Updating infrastructure is often overlooked and added later.
 Not everything uses container orahestration, but it's quickly becoming the standard.
 
 ---
-class: middle, no-dots6
+class: middle, no-dots
 
-# 🏋️‍♀️Build confidence
+# 🏋️‍♀️Build confidence to promote
 
 * 📋 Manual tests
+* 🤖 Automated E2E testing
 * 😱 Scream
 * ❗ Dashboards and alerts
-* 🤖 Automated E2E testing
 
 ???
-
+CI helped us build confidence to initially deploy our changs.
+What about confidence to promote to production?
+Pre-production environments allow us include others in building confidence.
 
 ---
 class: middle, no-dots
@@ -237,6 +242,8 @@ class: middle, no-dots
 * 🍰 Baking
 
 ???
+Our changes are in pre-production and we are confident in them.
+How do we promote them to production?
 
 ---
 class: middle, no-dots
@@ -285,6 +292,11 @@ jobs:
 ```
 
 ???
+One of the reason's GitHub Actions are popular is just need to make a YAML file in a specific directory.
+On pull_request opened, synchronize, or reopened, run the CI
+Use some distro image that has the tools you need.
+You can always install additional tools in your build steps.
+
 
 ---
 class: middle, no-dots
@@ -311,6 +323,11 @@ class: middle, no-dots
     push: false
 ```
 
+???
+Another reason GitUb actions are popular, is the marketplace.
+Install Go, checkout code, lint, build, test, build and push docker images
+This leverages the Makefile, Taskfile is becoming more populate and supports env files.
+
 ---
 class: middle, no-dots
 
@@ -329,6 +346,10 @@ jobs:
       ...
 ```
 
+???
+This workflow is similar to the previous one, but it runs when there is a commit pushed to the develop branch.
+This workflow includes the CI steps and some additional ones related to deployment.
+
 ---
 class: middle, no-dots
 
@@ -337,7 +358,7 @@ class: middle, no-dots
   uses: docker/build-push-action@v4
   with:
     tags: |
-      docker.example.com/blog:${{ github.sha }}
+      docker.example.com/my-service:${{ github.sha }}
     push: true
 
 - name: Update values.yaml
@@ -350,17 +371,29 @@ class: middle, no-dots
     message: 'Update Image Version to "${{ github.sha }}' 
 ```
 
+???
+The test environment is on a Kubernetes cluster.
+This cluster uses ArgoCD, which is a GitOps tool.
+The cluster is configured to watch the chart directory for changes.
+When there is a change, it will update the deployment.
+The last step in this workflow is to update the image tag in the values.yaml file.
+It's common for the chart to live in a central infrastuture repository.
+It's possible to dispatch workflows across repositories.
+
 ---
 class: middle, no-dots
 
 # 📝values.yaml
 
 ```yaml
-ingress: blog-test
+ingress: my-service-test
 image:
   repository: docker.example.com/my-service
   tag: a3ab2540624023f336cc682d6d6d4f175eb1eb7f
 ```
+
+???
+The tag is what gets updated in the previous step.
 
 ---
 class: middle, no-dots
@@ -375,10 +408,14 @@ metadata:
 spec:
   template:
       containers:
-        - name: blog
+        - name: my-service
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
 ...
 ```
+
+???
+Then ArgoCD detects a change it hydates the deployment with the update valtes.yaml file.
+Then it applies the hydrated resources to the cluster.
 
 ---
 class: middle, no-dots
@@ -397,6 +434,11 @@ jobs:
     steps:
       ...
 ```
+
+???
+We confirm our changes works as expected.
+Now we want to promote to production.
+In this workflow, production will deployed when a push is made to the main branch.
 
 ---
 class: middle, no-dots
@@ -419,10 +461,16 @@ class: middle, no-dots
     ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
     IMAGE_TAG: ${{ github.sha }}
   run: |
-    docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-    docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-    echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+    docker build -t $ECR_REGISTRY/my-service:$IMAGE_TAG .
+    docker push $ECR_REGISTRY/my-service:$IMAGE_TAG
+    echo "image=$ECR_REGISTRY/my-service:$IMAGE_TAG" >> $GITHUB_OUTPUT
 ```
+
+???
+We make a PR and merge out changes to main, triggering a deployment to production.
+Production is an ECS cluster in AWS us-west-2.
+We need to configure AWS credentials and login to ECR.
+Then we build, tag, and push the image to ECR.
 
 ---
 class: middle, no-dots, text-smaller
@@ -450,6 +498,19 @@ class: middle, no-dots, text-smaller
     cluster: production
 ```
 
+???
+This is where it gets funky. The right way to do this would be to move it to EKS.
+That would allow me to deploy to Test and Production the same way.
+If I wanted to continue to use ECS, then I would use Terraform or CDK.
+
+This approach works, but it's not ideal.
+There is little value in spending time on improving this.
+I don't plan on standing up another environment in ECS.
+
+We are using the AWS CLI to download the ECS task definition.
+The AWS ECS render task updates the image tag.
+Finally deploy the updated task definition.
+
 ---
 class: middle, no-dots
 
@@ -459,6 +520,12 @@ class: middle, no-dots
 * ArgoCD configuration for Test
 * AWS infrastructure for Production
 * Secrets management
+
+???
+How many of you have used Makefiles?
+ArgoCD is configured using K8s resoures, not showing those.
+As noted on the last slide there is no IaC for the ECS task or cluster.
+The IaC for the test environment does exist in it's own repo.
 
 ---
 class: middle, no-dots
@@ -471,6 +538,14 @@ class: middle, no-dots
 * 📦 Deploy to the cloud
 * ⛏️ Implement IaC
 
+???
+The first step is deciding that CI/CD is important and worth the effort.
+Implement a Maketfile/Taskfile that runs the CI steps.
+Run CI with GitHub Actions.
+Figure out how you deploy your application currently and script it.
+Run CI and the script when you merge your PRs.
+Implement IaC for your existing infrastructure.
+
 ---
 class: middle, center
 
@@ -480,5 +555,3 @@ class: middle, center
 class: middle, center
 
 # 👏 Thanks 👏
-
-<place holder for next event>
