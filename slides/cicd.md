@@ -17,15 +17,14 @@ class: middle, no-dots
 
 ???
 Software Engineer.
-Done a bit of everything.
-Current focus is SRE and DevOps.
+Work remotely.
+A wonderful partner and 3 cats.
 
 ---
 class: middle, center
 
 # Questions❓
 # Comments❓
-
 ✋__Raise your hand__✋
 
 ---
@@ -46,7 +45,6 @@ class: middle, no-dots
 
 # 🔄Continuous
 
-Runs automatically on:
 * ✍️ Pushing commits 
 * ⬆️ Merging pull requests 
 * 🌲 Pushing to select branches 
@@ -68,33 +66,36 @@ class: middle, no-dots
 
 ???
 Integration is about building the software and confirming it works as expected.
-Build, test, lint, etc.
+Involves running a series of steps that pass or fail.
 Northstar is CI passing means you can ship it.
+
 
 ---
 class: middle, no-dots
 
 # 🚢Deployment
 
+* 🏗️ Create infrastructure 
 * ⚙️ Deploy application 
 * 👩‍💻 Promote to Production 
-* 🏗️ Create infrastructure 
 
 ???
+Once you have confidence in your application, you deploy it.
 Deployment is very much dependent on your application and where it's being deployed.
 Creating infrastructure is an often overlooked part of deployments.
 Buckets, managed databases, DNS records, etc...
+Modern applications are often deployed using container orchestration.
 
 ---
 class: middle, no-dots
 
 # 🕔Is CI/CD worth it?
 
-* ➖ More tools and maintenance 🧰
+* ➖ More tools and maintenance 🤑
 * ➖ Requires DevOps skillset 👩‍💻
-* ➕ Fewer bugs & faster feedback 🏎️
-* ➕ Stop doing repetative non-cognative things 😴
-* ➕ Everyone can ship 🚢
+* ➕ Deploy smaller changes, frequently 🏎️
+* ➕ No more repetative non-cognative tasks 😴
+* ➕ Everyone can ship and rollback 🚢
 
 ???
 CI requires additional tools and the skillset to maintain them.
@@ -147,7 +148,7 @@ class: middle, no-dots
 
 # 🏭Workflow Engines
 
-* 📁 GitHub Actions
+* 🐱 GitHub Actions
 * ☁️ Your cloud provider's
 * 🍵 Jenkins
 * 💯 Many more
@@ -179,7 +180,7 @@ class: middle, no-dots
 # 🖊️Commits & PRs
 
 * ⚙️ Pushing a commit triggers CI workflow
-* 🚢 Merging PR triggers CI & CD workflows
+* 🚢 Merging PRs trigger CI & CD workflows
 
 ???
 Major touch points for the everage developer.
@@ -211,7 +212,8 @@ class: middle, no-dots
 # 🚢Deployment
 
 * ⛏️ Update infrastructure
-* 📦 Container orchestration
+* ☁️ API calls to your cloud provider
+* 📦 Containers orchestration
 
 ???
 Entirely dependent on your application and where it's being deployed.
