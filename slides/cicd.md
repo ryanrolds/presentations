@@ -23,7 +23,8 @@ Current focus is SRE and DevOps.
 ---
 class: middle, center
 
-# Questions❓ Comments❓
+# Questions❓
+# Comments❓
 
 ✋__Raise your hand__✋
 
@@ -91,7 +92,7 @@ class: middle, no-dots
 
 * ➖ More tools and maintenance 🧰
 * ➖ Requires DevOps skillset 👩‍💻
-* ➕ Smaller changes, fewer bugs, faster feedback 🏎️
+* ➕ Fewer bugs & faster feedback 🏎️
 * ➕ Stop doing repetative non-cognative things 😴
 * ➕ Everyone can ship 🚢
 
@@ -178,7 +179,7 @@ class: middle, no-dots
 # 🖊️Commits & PRs
 
 * ⚙️ Pushing a commit triggers CI workflow
-* 🚢 Merging PR triggers CI and deployment workflows
+* 🚢 Merging PR triggers CI & CD workflows
 
 ???
 Major touch points for the everage developer.
@@ -263,14 +264,12 @@ class: middle, no-dots
 │   │   ├── ingress.yaml
 │   │   └── service.yaml
 │   └── values.yaml
-├── docker-compose.yml
 └── Makefile
 ```
 
 ???
 Github Actions
 Helm chart
-Docker Compose for local
 Makefile for CI steps
 
 ---
@@ -302,21 +301,16 @@ You can always install additional tools in your build steps.
 class: middle, no-dots
 
 ```yaml
-- name: Set up Go 1.x
+- name: Set up Golang
   uses: actions/setup-go@v2
-
 - name: Check out code
   uses: actions/checkout@v2
-
 - name: Lint
   run: make lint
-
 - name: Build
   run: make build
-
 - name: Run tests
   run: make test
-
 - name: Build and push Docker images
   uses: docker/build-push-action@v1.1.0
   with:
@@ -388,7 +382,7 @@ class: middle, no-dots
 ```yaml
 ingress: my-service-test
 image:
-  repository: docker.example.com/my-service
+  repo: docker.example.com/my-service
   tag: a3ab2540624023f336cc682d6d6d4f175eb1eb7f
 ```
 
@@ -409,7 +403,7 @@ spec:
   template:
       containers:
         - name: my-service
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repo }}:{{ .Values.image.tag }}"
 ...
 ```
 
@@ -441,7 +435,7 @@ Now we want to promote to production.
 In this workflow, production will deployed when a push is made to the main branch.
 
 ---
-class: middle, no-dots
+class: middle, no-dots, smaller-text
 
 ```yaml
 - name: Configure AWS credentials
@@ -473,7 +467,7 @@ We need to configure AWS credentials and login to ECR.
 Then we build, tag, and push the image to ECR.
 
 ---
-class: middle, no-dots, text-smaller
+class: middle, no-dots, smaller-text
 
 ```yaml
 - name: Download task definition
@@ -516,10 +510,10 @@ class: middle, no-dots
 
 # 🤷What's missing?
 
-* Makefile with build, test, and lint targets
-* ArgoCD configuration for Test
-* AWS infrastructure for Production
-* Secrets management
+* 📝 Makefile with build, test, and lint targets
+* 🐙 ArgoCD configuration for Test
+* 🏗️ AWS IaC for Production
+* 🤫 Secrets management
 
 ???
 How many of you have used Makefiles?
