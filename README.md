@@ -37,7 +37,7 @@ See the Makefile for details.
 
 Update HTML as changes are made (requires `inotify-tools`):
 ```
-while inotifywait -e close_write slides/*; do make all; done
+while inotifywait -e close_write slides/* layout/*; do make all; done
 ```
 
 > TODO put the above in it's own container
