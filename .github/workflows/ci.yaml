@@ -9,10 +9,13 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+        
       - name: Build HTML
         run: make all
+
       - name: Build presentation image
         run: docker build .
+
       - name: Login to Docker registry
         uses: docker/login-action@v2
         with:
@@ -25,15 +28,6 @@ jobs:
           tags: |
             docker.pedanticorderliness.com/presentations:${{ github.sha }}
           push: true
-
-      # - name: Update values.yaml
-      #   uses: fjogeleit/yaml-update-action@main
-      #   with:
-      #     valueFile: 'chart/values.yaml'
-      #     propertyPath: 'image.tag'
-      #     value: '${{ github.sha }}'
-      #     commitChange: true
-      #     message: 'Update Image Version to "${{ github.sha }}' 
 
       - name: Generate a token
         id: generate_token
