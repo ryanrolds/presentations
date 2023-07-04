@@ -36,7 +36,7 @@ jobs:
           app_id: ${{ secrets.PO_APP_ID }}
           private_key: ${{ secrets.PO_PRIVATE_KEY }}
 
-      - name: Use the token
+      - name: Update presentations image tag in values.yaml
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
         run: |
