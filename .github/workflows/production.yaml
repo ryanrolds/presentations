@@ -1,10 +1,10 @@
 on:
   push:
     branches:
-    - master
+    - production
 jobs:
-  build:
-    name: Build
+  build_and_deploy_prod:
+    name: Build & Deploy Production
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -40,4 +40,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
         run: |
-          gh workflow run image_update.yaml -R ryanrolds/k8s-cluster -r master -F chart=presentations -F values_file=values.yaml -F tag_path=image.tag -F tag=${{ github.sha }}
+          gh workflow run image_update.yaml -R ryanrolds/k8s-cluster -r master -F chart=presentations -F values_file=production.yaml -F tag_path=image.tag -F tag=${{ github.sha }}

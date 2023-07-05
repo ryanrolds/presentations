@@ -1,0 +1,43 @@
+on:
+  push:
+    branches:
+    - master
+jobs:
+  build_and_deploy_test:
+    name: Build & Deploy Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        
+      - name: Build HTML
+        run: make all
+
+      - name: Build presentation image
+        run: docker build .
+
+      - name: Login to Docker registry
+        uses: docker/login-action@v2
+        with:
+          registry: docker.pedanticorderliness.com
+          username: ${{ secrets.DOCKER_REG_USER }}
+          password: ${{ secrets.DOCKER_REG_PASS }}
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v4
+        with:
+          tags: |
+            docker.pedanticorderliness.com/presentations:${{ github.sha }}
+          push: true
+
+      - name: Generate a token
+        id: generate_token
+        uses: tibdex/github-app-token@b62528385c34dbc9f38e5f4225ac829252d1ea92
+        with:
+          app_id: ${{ secrets.PO_APP_ID }}
+          private_key: ${{ secrets.PO_PRIVATE_KEY }}
+
+      - name: Update presentations image tag in values.yaml
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          gh workflow run image_update.yaml -R ryanrolds/k8s-cluster -r master -F chart=presentations -F values_file=values.yaml -F tag_path=image.tag -F tag=${{ github.sha }}
