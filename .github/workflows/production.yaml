@@ -47,4 +47,4 @@ jobs:
             -F values_file=production.yaml \
             -F tag_path=image.tag \
             -F tag=${{ github.sha }} \
-            -F branch=main
+            -F branch=production
