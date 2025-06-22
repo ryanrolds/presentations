@@ -42,7 +42,7 @@ jobs:
         run: |
           gh workflow run image_update.yaml \
             -R ryanrolds/infrastructure \
-            -r main \
+            -r production \
             -F chart=presentations \
             -F values_file=production.yaml \
             -F tag_path=image.tag \
