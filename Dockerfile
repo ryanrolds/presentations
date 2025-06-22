@@ -1,4 +1,4 @@
-FROM alpine:3.17
+FROM alpine:latest
 
 RUN apk --no-cache add ca-certificates make
 
@@ -7,7 +7,7 @@ COPY . .
 
 RUN make all
 
-FROM nginx:1.25.0-alpine3.17-slim
+FROM nginx:alpine
 
 WORKDIR /usr/share/nginx/html/
 
