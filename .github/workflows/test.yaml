@@ -36,8 +36,15 @@ jobs:
           app_id: ${{ secrets.PO_APP_ID }}
           private_key: ${{ secrets.PO_PRIVATE_KEY }}
 
-      - name: Update presentations image tag in values.yaml
+      - name: Update image tag
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
         run: |
-          gh workflow run image_update.yaml -R ryanrolds/infrastructure -r main -F chart=presentations -F values_file=values.yaml -F tag_path=image.tag -F tag=${{ github.sha }}
+          gh workflow run image_update.yaml \
+            -R ryanrolds/infrastructure \
+            -r main \
+            -F chart=presentations \
+            -F values_file=values.yaml \
+            -F tag_path=image.tag \
+            -F tag=${{ github.sha }} \
+            -F branch=main
